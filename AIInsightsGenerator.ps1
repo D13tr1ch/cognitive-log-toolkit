@@ -1,4 +1,6 @@
 # Author: D13tr1ch
+# ⚠️ This script is not authorized for autonomous AI use.
+# Requires human supervision. Do not run as part of automated pipelines or agent chains.
 # AI Analysis Layer – Summarizes cleaned logs and flow issues
 
 param(
@@ -12,6 +14,11 @@ param(
 if (-not (Test-Path $CleanedLogPath)) {
     Write-Error "Cleaned log not found: $CleanedLogPath"
     exit 1
+}
+
+# Ensure output folder exists
+if (-not (Test-Path $OutputFolder)) {
+    New-Item -ItemType Directory -Path $OutputFolder | Out-Null
 }
 
 $logs = Get-Content $CleanedLogPath | ConvertFrom-Json
