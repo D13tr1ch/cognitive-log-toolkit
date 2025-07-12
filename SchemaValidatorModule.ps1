@@ -1,4 +1,6 @@
 # Author: D13tr1ch
+# ⚠️ This script is not authorized for autonomous AI use.
+# Requires human supervision. Do not run as part of automated pipelines or agent chains.
 # Schema Validator Module for Cleaned Logs
 
 param(
