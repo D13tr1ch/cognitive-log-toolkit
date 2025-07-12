@@ -1,4 +1,4 @@
- 🧠 AI Log Analysis & Diagnostic Toolkit
+🧠 AI Log Analysis & Diagnostic Toolkit
 
 A modular PowerShell toolkit for ingesting, formatting, validating, and analyzing log files — designed with a cognitive fingerprint by D13tr1ch.
 
