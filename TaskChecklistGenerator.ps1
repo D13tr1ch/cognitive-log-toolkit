@@ -14,7 +14,7 @@ $modules = @(
     @{ name = "Flow Failure Detector"; file = "MessageFlowFailureDetector.ps1"; status = "✅" },
     @{ name = "AI Insights Generator"; file = "AIInsightsGenerator.ps1"; status = "✅" },
     @{ name = "Diagnostic CLI Wrapper"; file = "run-diagnostic.ps1"; status = "✅" },
-    @{ name = "Export Layer"; file = "exported_report.zip"; status = "✅" },
+    @{ name = "Export Manager"; file = "summary.md + FlowFailures.csv"; status = "✅" },
     @{ name = "License + Identity"; file = "CognitiveFingerprintLicense.md"; status = "✅" },
     @{ name = "Metadata Manifest"; file = "CognitiveLicenseManifest.yaml"; status = "✅" }
 )
