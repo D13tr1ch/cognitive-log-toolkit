@@ -1,0 +1,51 @@
+# 🔍 Log Format to Parser Mapping Templates
+
+- id: web-app-regex
+  name: Web App Logs (Auth/API)
+  match:
+    contains:
+      - "ERROR"
+      - "login"
+      - "token"
+    format: regex
+  regex: '^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z) (?<level>[A-Z]+) (?<service>[\\w\\-]+): (?<message>.+)$'
+  fields:
+    timestamp: timestamp
+    level: level
+    message: message
+    service: service
+
+- id: voice-platform-json
+  name: Voice Platform Logs (Genesys-style)
+  match:
+    contains:
+      - "eventTime"
+      - "conversationId"
+      - "messageBody"
+    format: json
+  fields:
+    timestamp: eventTime
+    level: severity
+    message: messageBody
+    conversation_id: conversationId
+    optional:
+      participant_id: participantId
+      direction: direction
+      media_type: mediaType
+
+- id: custom-cli-delimited
+  name: Custom CLI Log (Delimited)
+  match:
+    contains:
+      - "##[error]"
+      - "timeout"
+      - "connection"
+    format: delimited
+  delimiter: '|'
+  header_row: false
+  fields:
+    timestamp: 0
+    level: 1
+    message: 2
+    context: 3
+  notes: "Assumes columns like: time|level|message|context"

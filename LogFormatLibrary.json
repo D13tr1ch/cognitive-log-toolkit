@@ -1,0 +1,47 @@
+[
+  {
+    "id": "genesys-json",
+    "name": "Genesys Cloud Log (JSON)",
+    "match": {
+      "contains": ["eventTime", "conversationId", "messageBody"],
+      "format": "json"
+    },
+    "fields": {
+      "timestamp": "eventTime",
+      "message": "messageBody",
+      "level": "severity"
+    }
+  },
+  {
+    "id": "web-app-regex",
+    "name": "Web App Logs (Regex)",
+    "match": {
+      "contains": ["ERROR", "login", "token"],
+      "format": "regex"
+    },
+    "regex": "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z) (?<level>[A-Z]+) (?<service>[\\w\\-]+): (?<message>.+)$",
+    "fields": {
+      "timestamp": "timestamp",
+      "level": "level",
+      "message": "message",
+      "service": "service"
+    }
+  },
+  {
+    "id": "custom-cli-delimited",
+    "name": "Custom CLI Log (Delimited)",
+    "match": {
+      "contains": ["##[error]", "timeout", "connection"],
+      "format": "delimited"
+    },
+    "delimiter": "|",
+    "header_row": false,
+    "fields": {
+      "timestamp": 0,
+      "level": 1,
+      "message": 2,
+      "context": 3
+    },
+    "notes": "Assumes columns like: time|level|message|context"
+  }
+]
