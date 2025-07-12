@@ -15,7 +15,7 @@ function Find-LicenseTags {
         if ($content -match "Cognitive Fingerprint License") {
             $tags += [PSCustomObject]@{
                 File = $file.FullName
-                Author = if ($content -match "Author:\\s*(.+)") { $matches[1].Trim() } else { "Unknown" }
+                Author = if ($content -match "Author:\s*(.+)") { $matches[1].Trim() } else { "Unknown" }
                 Valid = $true
             }
         }
@@ -33,7 +33,7 @@ function Find-HeaderSignatures {
         if ($authorLine) {
             $headers += [PSCustomObject]@{
                 File = $file.FullName
-                AuthorTag = $authorLine -replace "^# Author:\\s*", ""
+                AuthorTag = $authorLine -replace "^# Author:\s*", ""
                 LicenseTag = if ($lines -match "Cognitive Fingerprint License") { "CFL found" } else { "None" }
             }
         }
