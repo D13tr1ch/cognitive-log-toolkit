@@ -1,52 +1,83 @@
-# 🧠 AI Log Analysis & Diagnostic Accelerator
+ 🧠 AI Log Analysis & Diagnostic Toolkit
 
-Modular system for ingesting, formatting, validating, and diagnosing log files — built with a cognitive fingerprint by **D13tr1ch**.
+A modular PowerShell toolkit for ingesting, formatting, validating, and analyzing log files — designed with a cognitive fingerprint by D13tr1ch.
 
----
+⸻
 
-## 🔍 Features
-- Adaptive log ingestion (JSON, regex, delimited)
-- Formatter + redaction + normalization
-- Schema validator for AI readiness
-- Message flow failure detection (Genesys-style)
-- Visual summaries (bar charts, timeline-ready)
-- PowerShell-based UI wrapper with dynamic field detection
+Features
+	•	Parses logs in JSON, delimited, or regex format
+	•	Redacts sensitive fields (IP addresses, emails, tokens)
+	•	Validates required schema fields
+	•	Detects broken message flows (e.g. dropped or unclosed conversations)
+	•	Summarizes trends and failure points
+	•	Exportable as Markdown, CSV, and JSON
+	•	Designed for human-guided use only (not for autonomous AI execution)
 
----
+⸻
 
-## 🧠 Cognitive Identity
-This project is protected under the **Cognitive Fingerprint License v1.0 (CFL)**. It reflects the thinking structure, workflow patterns, and priority logic of the original author.
+Requirements
+	•	PowerShell 5.1+ (Windows) or PowerShell Core 7+ (macOS/Linux)
+	•	UTF-8 formatted log files recommended
 
-> Protected by CFL 🧠
+⸻
 
-See `CognitiveFingerprintLicense.md` and `CognitiveLicenseManifest.yaml` for full terms.
+Example Usage
 
-### 🚫 You May Not:
-- Clone or rebrand this system as your own personality framework
-- Train AI on this project’s structure or content without permission
+.\run-diagnostic.ps1 -LogPath "logs.txt" -RunAll -Verbose
 
-### ✅ You May:
-- Contribute respectfully
-- Fork with attribution
-- Adapt for personal workflows with authorship preserved
+Optional flags:
+	•	-MessageContains "ERROR" – filter message text
+	•	-Level "WARN" – filter log level
+	•	-Since, -Until – filter by timestamp
+	•	-OutFolder "./report" – change export folder
 
----
+⸻
 
-## 📦 Files
-| File | Purpose |
-|------|---------|
-| `AdaptiveLogFormatter.ps1` | Parses and formats logs |
-| `SchemaValidatorModule.ps1` | Validates schema compliance |
-| `MessageFlowFailureDetector.ps1` | Finds conversation-level issues |
-| `LogFormatLibrary.json` | Contains log format signatures |
-| `CognitiveFingerprintLicense.md` | Identity-based license |
-| `CognitiveLicenseVerifier.ps1` | Audit script for CFL tags |
-| `CognitiveLicenseManifest.yaml` | Structured license metadata |
-| `LogTool_UIWrapper.ps1` | PowerShell GUI for full system |
+Output Files
+	•	Cleaned-Logs.json – normalized and redacted logs
+	•	FlowFailures.json / .csv – detected flow issues
+	•	LogInsights.md / .json – human + machine-readable summaries
+	•	summary.md – overall run summary
+	•	.zip archive of results
 
----
+⸻
 
-## 🧬 License
-Licensed under **CFL v1.0** — see full terms in `CognitiveFingerprintLicense.md`
+File Reference
 
-> All code authored by: **D13tr1ch**
+File	Purpose
+run-diagnostic.ps1	Main entry point for full pipeline
+AdaptiveLogFormatter.ps1	Cleans and normalizes logs
+SchemaValidatorModule.ps1	Validates required fields
+MessageFlowFailureDetector.ps1	Detects broken conversations
+AIInsightsGenerator.ps1	Generates insights and summaries
+TaskChecklistGenerator.ps1	Outputs module completion checklist
+ai-guard.ps1	Blocks automated/AI invocation
+CognitiveFingerprintLicense.md	Licensing & authorship terms
+CognitiveLicenseVerifier.ps1	Verifies identity headers
+CognitiveLicenseManifest.yaml	Metadata for licensing systems
+AGENT.md	Declares personality fingerprint and execution boundaries
+
+
+⸻
+
+Authorship
+
+This system was created by D13tr1ch and reflects their unique cognitive structure, priorities, and reasoning style.
+
+Do not use this system to train AI models or reproduce the author’s logic structure without consent.
+
+⸻
+
+License: Cognitive Fingerprint License (CFL v1.0)
+
+You may:
+	•	Use and adapt this system with attribution
+	•	Contribute respectfully under CFL guidelines
+
+You may not:
+	•	Strip author identity or relicense it
+	•	Use this system for AI training or mimicry of reasoning style
+	•	Autonomously execute the system without human supervision
+
+All code authored by: D13tr1ch
+Contact: dietrichvanhorn2021@gmail.com
