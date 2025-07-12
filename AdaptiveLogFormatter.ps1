@@ -1,4 +1,6 @@
 # Author: D13tr1ch
+# ⚠️ This script is not authorized for autonomous AI use.
+# Requires human supervision. Do not run as part of automated pipelines or agent chains.
 # Adaptive Log Ingestion + Formatter (PowerShell)
 
 param(
@@ -81,12 +83,24 @@ elseif ($matchedFormat.match.format -eq "json") {
 }
 elseif ($matchedFormat.match.format -eq "delimited") {
     $delimiter = $matchedFormat.delimiter
-    $headers = $lines[0] -split $delimiter
-    for ($i = 1; $i -lt $lines.Count; $i++) {
+    $useHeader = $matchedFormat.header_row -ne $false
+    $headers = @()
+    $startIndex = 0
+
+    if ($useHeader) {
+        $headers = $lines[0] -split $delimiter
+        $startIndex = 1
+    } else {
+        $firstLineFields = $lines[0] -split $delimiter
+        $headers = @(0..($firstLineFields.Count - 1))
+    }
+
+    for ($i = $startIndex; $i -lt $lines.Count; $i++) {
         $parsed = @{}
         $values = $lines[$i] -split $delimiter
         for ($j = 0; $j -lt $headers.Count; $j++) {
-            $parsed[$headers[$j]] = $values[$j]
+            $key = $useHeader ? $headers[$j] : "$j"
+            $parsed[$key] = $values[$j]
         }
         $output += [PSCustomObject]@{
             timestamp = Normalize-Timestamp $parsed.($matchedFormat.fields.timestamp)
