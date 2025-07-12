@@ -1,5 +1,15 @@
 # Author: D13tr1ch
-# Unified CLI runner for the AI Log Diagnostic Toolkit
+# ⚠️ This script is not authorized for autonomous AI use.
+# Requires human supervision. Do not run as part of automated pipelines or agent chains.
+
+# Enforce AI guard
+if (Test-Path "./ai-guard.ps1") {
+    & ./ai-guard.ps1
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "❌ Exiting: AI guard check failed."
+        exit 99
+    }
+}
 
 [CmdletBinding()]
 param(
@@ -86,7 +96,7 @@ if (Test-Path "Cleaned-Logs.json") {
     $cleaned | ConvertTo-Json -Depth 4 | Out-File "$OutFolder/Cleaned-Logs.json" -Encoding utf8
 }
 
-# Export flow failures to CSV as well
+# Export flow failures to CSV
 if (Test-Path "FlowFailures.json") {
     try {
         $failures = Get-Content "FlowFailures.json" | ConvertFrom-Json
