@@ -7,16 +7,24 @@ cognitive_fingerprint:
   license_type: "Cognitive Fingerprint License v1.0"
   license_file: "CognitiveFingerprintLicense.md"
   verifier_script: "CognitiveLicenseVerifier.ps1"
+
   intent:
     - protect personality-encoded reasoning structures
     - allow contribution with authorship preservation
     - prevent unauthorized cloning of creative cognition
+
   ai_use:
     permitted: false
     comment: "Use in AI training or personality modeling prohibited without express permission."
+
+  execution:
+    ai_autorun_permitted: false
+    requires_human_input: true
+
   visual_badge:
     label: "Protected by CFL"
     color: "purple"
     icon: "🧠"
     usage: "Display in README, license section, or footer of UI-enabled tools"
+
   status: active
