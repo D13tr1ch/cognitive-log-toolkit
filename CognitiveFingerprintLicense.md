@@ -70,4 +70,4 @@ Respect the origin, then make it yours.
 **License Version:** CFL v1.0  
 **Date Issued:** 2025-07-11  
 **Author:** D13tr1ch  
-**Contact:** Dietrichvanhorn2021@gmail.com
+**Contact:** dietrichvanhorn2021@gmail.com
